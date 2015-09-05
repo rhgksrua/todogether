@@ -2,6 +2,7 @@
 
 var express = require('express');
 var app = express();
+var db = require('./database/db');
 
 app.get('/', function(req, res) {
     res.send('Hello World');
@@ -14,7 +15,12 @@ app.get('/notes', function(req, res) {
         title: 'Test note',
         description: 'Test body'
     };
-    res.json(note)
+    res.json(note);
+});
+
+app.get('/addtodb', function(req, res) {
+    db();
+    res.json({});
 });
 
 var server = app.listen(3000, function() {
