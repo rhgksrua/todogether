@@ -2,7 +2,8 @@
 
 var express = require('express');
 var app = express();
-var db = require('./models/db');
+var dbconnection = require('./models/dbconnect');
+var User = require('./models/SchemaTemplate');
 
 app.get('/', function(req, res) {
     res.send('Hello World!');
@@ -18,9 +19,16 @@ app.get('/notes', function(req, res) {
     res.json(note);
 });
 
-app.get('/addtodb', function(req, res) {
-    db();
-    res.json({});
+// Creates a single entry of User.
+app.get('/createentry', function(req, res) {
+    var newUser = new User({});
+    newUser.save(function(err, data) {
+        if (err) {
+            return console.log(err);
+        }
+        return console.log(data);
+    });
+    res.end();
 });
 
 var server = app.listen(3000, function() {
