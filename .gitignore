@@ -6,3 +6,7 @@ tmp
 .DS_Store
 .idea
 *.swp
+<<<<<<< HEAD
+=======
+*~
+>>>>>>> 00a7474fb417b64837ff2d3e7e5bfdc4e3b9a2a2
