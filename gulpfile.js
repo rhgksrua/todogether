@@ -10,7 +10,8 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
-    del = require('del');
+    del = require('del'),
+    nodemon = require('gulp-nodemon');
 
 
 gulp.task('styles', function() {
@@ -32,7 +33,7 @@ gulp.task('images', function() {
 });
 
 gulp.task('clean', function(cb) {
-    del(['dist/assets/css', 'dist/assets/js', 'dist/assets/img'], cb)
+    del(['dist/assets/css', 'dist/assets/js', 'dist/assets/img'], cb);
 });
 
 gulp.task('watch', function() {
@@ -50,5 +51,12 @@ gulp.task('watch', function() {
 
 });
 
-
+// Runs server
+gulp.task('develop', function() {
+    nodemon({
+        script: 'server.js',
+        ext: 'js html',
+        env: { 'NODE_ENV': 'development' }
+    });
+});
 

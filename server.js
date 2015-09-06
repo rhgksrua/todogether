@@ -2,10 +2,10 @@
 
 var express = require('express');
 var app = express();
-var db = require('./database/db');
+var db = require('./models/db');
 
 app.get('/', function(req, res) {
-    res.send('Hello World');
+    res.send('Hello World!');
 });
 
 app.use(express.static('app'));
