@@ -4,6 +4,10 @@ var express = require('express');
 var app = express();
 var dbconnection = require('./models/dbconnect');
 var User = require('./models/SchemaTemplate');
+var Todo = require('./models/Todo');
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
 
 app.get('/', function(req, res) {
     res.send('Hello World!');
@@ -19,16 +23,26 @@ app.get('/notes', function(req, res) {
     res.json(note);
 });
 
-// Creates a single entry of User.
-app.get('/createentry', function(req, res) {
-    var newUser = new User({});
-    newUser.save(function(err, data) {
+
+app.post('/api/todo', function(req, res) {
+    var todo = new Todo(req.body);
+    todo.save(function(err, data) {
         if (err) {
+            res.json({error: 'db error'});
             return console.log(err);
         }
+        res.json('todo submitted');
         return console.log(data);
     });
-    res.end();
+});
+
+app.get('/api/todo', function(req, res) {
+    Todo.find().exec(function(err, todo) {
+        if (err) {
+            return res.json({err: 'db exec error'});
+        }
+        return res.json(todo);
+    });
 });
 
 var server = app.listen(3000, function() {
