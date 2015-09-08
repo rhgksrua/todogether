@@ -43,7 +43,7 @@ gulp.task('watch', function() {
 
   // Watch image files
   gulp.watch('app/images/**/*', ['images']);
-    // Create LiveReload server
+    // create LiveReload server
   livereload.listen();
 
   // Watch any files in dist/, reload on change
