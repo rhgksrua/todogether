@@ -36,5 +36,9 @@ config(function($stateProvider, $urlRouterProvider) {
             .state("login" ,{
                 url:"/login",
                 templateUrl:"partials/login.html" })
+            .state("register" ,{
+                url:"/newuser",
+                templateUrl:"partials/register.html"
+            })
         ;
 });
