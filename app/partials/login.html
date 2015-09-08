@@ -1,0 +1,20 @@
+<form name="userForm" novalidate ng-submit="login.submit(user)">
+    <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && userForm.username.$dirty }">
+        <label>User Name</label>
+        <input type="text" class="form-control" name="username" placeholder="User Name" data-ng-model="user.username" required ng-minlength="10">
+        <div class="help-block" ng-messages="userForm.username.$error" ng-show="userForm.username.$dirty">
+            <p class="help-block" ng-message="required">User Name is required</p>
+            <p class="help-block" ng-message="minlength">User Name must be more than 10 chars</p>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error':userForm.password.$invalid && userForm.password.$dirty}">
+        <label>Password</label>
+        <input type="password" class="form-control" name="password" data-ng-model="user.password" required >
+        <div class="help-block" ng-messages="userForm.password.$error" ng-show="userForm.password.$dirty">
+            <p class="help-block" ng-message="required">password is required</p>
+        </div>
+
+    </div>
+    <button type="submit" class="btn btn-default" ng-disabled="userForm.$invalid">Submit</button>
+
+</form>

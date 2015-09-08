@@ -2,7 +2,7 @@
 
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
-  'ui.router','myApp.create'
+  'ui.router','myApp.create','ngMessages'
 ]).
 config(function($stateProvider, $urlRouterProvider) {
         //
@@ -32,5 +32,9 @@ config(function($stateProvider, $urlRouterProvider) {
                 controller: function($scope) {
                     $scope.things = ["A", "Set", "Of", "Things"];
                 }
-            });
+            })
+            .state("login" ,{
+                url:"/login",
+                templateUrl:"partials/login.html" })
+        ;
 });
