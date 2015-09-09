@@ -1,8 +1,8 @@
 /**
  * Created by pavan on 9/8/15.
  */
-var myApp=angular.module("myApp");
-myApp.directive("confirmPassword",function() {
+var app=angular.module("myApp");
+var compareTo = function() {
     return {
         require: "ngModel",
         scope: {
@@ -19,4 +19,6 @@ myApp.directive("confirmPassword",function() {
             });
         }
     };
-})
+};
+
+app.directive("compareTo", compareTo);

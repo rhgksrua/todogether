@@ -21,7 +21,6 @@
 
         </div>
 
-{{newB.password}}=={{newB.confirmpassword}}
         <div class="form-group" ng-class="{'has-error':userForm.confirmpassword.$invalid && userForm.password.$dirty}">
             <label>Password</label>
             <input type="password" class="form-control" name="confirmpassword" data-ng-model="newB.confirmpassword" compare-to="newB.password">
