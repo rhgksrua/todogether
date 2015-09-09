@@ -2,11 +2,25 @@
 
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
-  'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
+  'ui.router','myApp.create','ngMessages'
 ]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+config(function($stateProvider, $urlRouterProvider) {
+        //
+        // For any unmatched url, redirect to /state1
+        $urlRouterProvider.otherwise("/main");
+        //
+        // Now set up the states
+        $stateProvider
+            .state("base" , {
+                url : "/main" ,
+                templateUrl : "partials/base.html"
+            })
+            .state("login" ,{
+                url:"/login",
+                templateUrl:"partials/login.html" })
+            .state("register" ,{
+                url:"/newuser",
+                templateUrl:"partials/register.html"
+            })
+        ;
+});

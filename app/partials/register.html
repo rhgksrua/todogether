@@ -1,0 +1,129 @@
+<div class="container">
+    <form name="userForm" novalidate ng-submit="ctrl.addNew(newB)">
+        <!-- -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && userForm.username.$dirty }">
+            <label>User Name</label>
+            <input type="text" class="form-control" name="username" placeholder="User Name" data-ng-model="newB.username" required ng-minlength="10">
+            <div class="help-block" ng-messages="userForm.username.$error" ng-show="userForm.username.$dirty">
+                <p class="help-block" ng-message="required">User Name is required</p>
+                <p class="help-block" ng-message="minlength">User Name must be more than 10 chars</p>
+            </div>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error':userForm.password.$invalid && userForm.password.$dirty}">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password" data-ng-model="newB.password" required ng-minlength="7" ng-pattern="/^(?=.*\d)(?=.*[a-zA-Z]).{6,20}$/">
+            <div class="help-block" ng-messages="userForm.password.$error" ng-show="userForm.password.$dirty">
+                <p class="help-block" ng-message="required">password is required</p>
+                <p class="help-block" ng-message="minlength">Password must be atleast 7 chars</p>
+                <p class="help-block" ng-message="pattern">Password must be one alphabetic character and one number</p>
+            </div>
+
+        </div>
+
+        <div class="form-group" ng-class="{'has-error':userForm.confirmpassword.$invalid && userForm.password.$dirty}">
+            <label>Password</label>
+            <input type="password" class="form-control" name="confirmpassword" data-ng-model="newB.confirmpassword" compare-to="newB.password">
+            <div class="help-block" ng-messages="userForm.confirmpassword.$error" ng-show="userForm.confirmpassword.$dirty">
+                <p class="help-block" ng-message="compareTo">password must match</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && userForm.name.$dirty }">
+            <label>First Name</label>
+            <input type="text" class="form-control" name="name" placeholder="First Name" data-ng-model="newB.name" required ng-minlength="3">
+            <div class="help-block" ng-messages="userForm.name.$error" ng-show="userForm.name.$dirty">
+                <p class="help-block" ng-message="required">First Name is required</p>
+                <p class="help-block" ng-message="minlength">First Name must be more than 3 chars</p>
+            </div>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error' : userForm.lastname.$invalid && userForm.lastname.$dirty }">
+            <label>Last Name</label>
+            <input type="text" class="form-control" name="lastname" placeholder="Last name" data-ng-model="newB.lastname" required>
+            <div ng-messages="userForm.lastname.$error" ng-show="userForm.lastname.$dirty">
+                <p class="help-block" ng-message="required">Last Name is required</p>
+            </div>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && userForm.email.$dirty }">
+            <label>Email address</label>
+            <input type="email" class="form-control" name="email" placeholder="Email" data-ng-model="newB.email" required>
+            <div ng-messages="userForm.email.$error" ng-if='userForm.email.$dirty'>
+                <p class="help-block" ng-message="required">Email is required</p>
+                <p class="help-block" ng-message="email">Enter a valid email</p>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label >Gender</label>
+            <select class="form-control" name="gender" data-ng-model="newB.gender" ng-init="newB.gender='male'">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">other</option>
+            </select>
+
+        </div>
+
+
+        <div class="form-group" ng-class="{ 'has-error' : userForm.address1.$invalid && userForm.address1.$dirty }">
+            <label >Address Line 1:</label>
+            <input id="address-line1" name="address1" type="text" placeholder="address line 1" data-ng-model="newB.address1" class="form-control" required>
+            <p class="help-block">Street address, P.O. box, company name, c/o</p>
+            <div ng-messages="userForm.address1.$error" ng-show="userForm.address1.$dirty">
+                <p class="help-block" ng-message="required">Address is required</p>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label>Address Line 2</label>
+            <div class="controls">
+                <input id="address-line2" name="address2" type="text" placeholder="address line 2" data-ng-model="newB.address2" class="form-control">
+                <p class="help-block">Apartment, suite , unit, building, floor, etc.</p>
+            </div>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error' : userForm.city.$invalid && userForm.city.$dirty }">
+            <label class="control-label">City / Town</label>
+            <div class="controls">
+                <input id="city" name="city" type="text" placeholder="city" class="form-control" data-ng-model="newB.city" required>
+                <div ng-messages="userForm.city.$error" ng-show="userForm.city.$dirty">
+                    <p class="help-block" ng-message="required">city is required</p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group" ng-class="{ 'has-error' : userForm.state.$invalid && userForm.state.$dirty }">
+            <label>State / Province / Region</label>
+            <div class="controls">
+                <input id="region" name="state" type="text" placeholder="state / province / region" data-ng-model="newB.state" required class="form-control">
+                <div ng-messages="userForm.state.$error" ng-show="userForm.state.$dirty">
+                    <p class="help-block" ng-message="required">State is required</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group" ng-class="{ 'has-error' : userForm.pin.$invalid && userForm.pin.$dirty }">
+            <label>Zip / Postal Code</label>
+            <div class="controls">
+                <input id="postal-code" name="pin" type="text" ng-pattern="/^[0-9]{5}$/" required placeholder="zip or postal code" data-ng-model="newB.pin" class="form-control">
+                <div ng-messages="userForm.pin.$error" ng-show="userForm.pin.$dirty">
+                    <p class="help-block" ng-message="required">Pin is required</p>
+                    <p class="help-block" ng-message="pattern">Enter valid Pin.</p>
+
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-default" data-ng-disabled="userForm.$invalid">Submit</button>
+    </form>
+
+</div>
