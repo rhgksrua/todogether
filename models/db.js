@@ -1,4 +1,5 @@
 // db.js
+// DEPRECATED NEED TO REMOVE!!!!!!
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
