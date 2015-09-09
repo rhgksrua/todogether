@@ -10,6 +10,28 @@
             </div>
         </div>
 
+        <div class="form-group" ng-class="{'has-error':userForm.password.$invalid && userForm.password.$dirty}">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password" data-ng-model="newB.password" required ng-minlength="7" ng-pattern="/^(?=.*\d)(?=.*[a-zA-Z]).{6,20}$/">
+            <div class="help-block" ng-messages="userForm.password.$error" ng-show="userForm.password.$dirty">
+                <p class="help-block" ng-message="required">password is required</p>
+                <p class="help-block" ng-message="minlength">Password must be atleast 7 chars</p>
+                <p class="help-block" ng-message="pattern">Password must be one alphabetic character and one number</p>
+            </div>
+
+        </div>
+
+{{newB.password}}=={{newB.confirmpassword}}
+        <div class="form-group" ng-class="{'has-error':userForm.confirmpassword.$invalid && userForm.password.$dirty}">
+            <label>Password</label>
+            <input type="password" class="form-control" name="confirmpassword" data-ng-model="newB.confirmpassword" compare-to="newB.password">
+            <div class="help-block" ng-messages="userForm.confirmpassword.$error" ng-show="userForm.confirmpassword.$dirty">
+                <p class="help-block" ng-message="compareTo">password must match</p>
+
+            </div>
+
+        </div>
+
 
         <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && userForm.name.$dirty }">
             <label>First Name</label>
