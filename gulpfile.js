@@ -24,6 +24,15 @@ gulp.task('styles', function() {
 
 });    
 
+gulp.task('styles:develop', function() {
+  return sass('app/scss/', { style: 'expanded' })
+    .pipe(gulp.dest('app/css/'));
+});    
+
+gulp.task('watch:develop', function() {
+    gulp.watch('app/scss/*.scss', ['styles:develop']);
+
+});
 
 gulp.task('images', function() {
   return gulp.src('app/images/**/*')
