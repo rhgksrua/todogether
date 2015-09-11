@@ -22,7 +22,7 @@
         </div>
 
         <div class="form-group" ng-class="{'has-error':userForm.confirmpassword.$invalid && userForm.password.$dirty}">
-            <label>Password</label>
+            <label>Confirm Password</label>
             <input type="password" class="form-control" name="confirmpassword" data-ng-model="newB.confirmpassword" compare-to="newB.password">
             <div class="help-block" ng-messages="userForm.confirmpassword.$error" ng-show="userForm.confirmpassword.$dirty">
                 <p class="help-block" ng-message="compareTo">password must match</p>
