@@ -1,7 +1,7 @@
 <div class="container">
-    <form name="userForm" novalidate ng-submit="ctrl.addNew(newB)">
+    <form name="userForm" novalidate ng-submit="rc.register(user)">
         <!-- -->
-        <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && userForm.username.$dirty }">
+        <div ng-hide='true' class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && userForm.username.$dirty }">
             <label>User Name</label>
             <input type="text" class="form-control" name="username" placeholder="User Name" data-ng-model="newB.username" required ng-minlength="10">
             <div class="help-block" ng-messages="userForm.username.$error" ng-show="userForm.username.$dirty">
@@ -12,7 +12,10 @@
 
         <div class="form-group" ng-class="{'has-error':userForm.password.$invalid && userForm.password.$dirty}">
             <label>Password</label>
-            <input type="password" class="form-control" name="password" data-ng-model="newB.password" required ng-minlength="7" ng-pattern="/^(?=.*\d)(?=.*[a-zA-Z]).{6,20}$/">
+            <!--
+            <input type="password" class="form-control" name="password" data-ng-model="user.password" required ng-minlength="1" ng-pattern="/^(?=.*\d)(?=.*[a-zA-Z]).{6,20}$/">
+            -->
+            <input type="password" class="form-control" name="password" data-ng-model="user.password" required ng-minlength="1">
             <div class="help-block" ng-messages="userForm.password.$error" ng-show="userForm.password.$dirty">
                 <p class="help-block" ng-message="required">password is required</p>
                 <p class="help-block" ng-message="minlength">Password must be atleast 7 chars</p>
@@ -23,7 +26,7 @@
 
         <div class="form-group" ng-class="{'has-error':userForm.confirmpassword.$invalid && userForm.password.$dirty}">
             <label>Confirm Password</label>
-            <input type="password" class="form-control" name="confirmpassword" data-ng-model="newB.confirmpassword" compare-to="newB.password">
+            <input type="password" class="form-control" name="confirmpassword" data-ng-model="newB.confirmpassword" compare-to="user.password">
             <div class="help-block" ng-messages="userForm.confirmpassword.$error" ng-show="userForm.confirmpassword.$dirty">
                 <p class="help-block" ng-message="compareTo">password must match</p>
 
@@ -32,7 +35,7 @@
         </div>
 
 
-        <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && userForm.name.$dirty }">
+        <div ng-hide='true' class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && userForm.name.$dirty }">
             <label>First Name</label>
             <input type="text" class="form-control" name="name" placeholder="First Name" data-ng-model="newB.name" required ng-minlength="3">
             <div class="help-block" ng-messages="userForm.name.$error" ng-show="userForm.name.$dirty">
@@ -41,7 +44,7 @@
             </div>
         </div>
 
-        <div class="form-group" ng-class="{ 'has-error' : userForm.lastname.$invalid && userForm.lastname.$dirty }">
+        <div ng-hide='true' class="form-group" ng-class="{ 'has-error' : userForm.lastname.$invalid && userForm.lastname.$dirty }">
             <label>Last Name</label>
             <input type="text" class="form-control" name="lastname" placeholder="Last name" data-ng-model="newB.lastname" required>
             <div ng-messages="userForm.lastname.$error" ng-show="userForm.lastname.$dirty">
@@ -51,7 +54,7 @@
 
         <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && userForm.email.$dirty }">
             <label>Email address</label>
-            <input type="email" class="form-control" name="email" placeholder="Email" data-ng-model="newB.email" required>
+            <input type="text" class="form-control" name="email" placeholder="Email" data-ng-model="user.email" required>
             <div ng-messages="userForm.email.$error" ng-if='userForm.email.$dirty'>
                 <p class="help-block" ng-message="required">Email is required</p>
                 <p class="help-block" ng-message="email">Enter a valid email</p>
@@ -59,6 +62,7 @@
         </div>
 
 
+        <div ng-hide='true'>
 
         <div class="form-group">
             <label >Gender</label>
@@ -123,7 +127,13 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-default" data-ng-disabled="userForm.$invalid">Submit</button>
-    </form>
 
+        </div>
+        <!--
+        <button type="submit" class="btn btn-default" data-ng-disabled="userForm.$invalid">Submit</button>
+        -->
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <div class='alert alert-danger' ng-show='rc.emailExists'>Email exists</div>
+    <div class='alert alert-danger' ng-show='rc.serverError'>Failed to register</div>
 </div>
