@@ -51,20 +51,53 @@ app.get('/api/todo', function(req, res) {
     });
 });
 
+/**
+ *  Register api endpoint
+ *
+ *  request json
+ *  {
+ *      email:    email,
+ *      password: password
+ *  }
+ *
+ *  reponse json
+ *  success:
+ *  {
+ *      token: token,
+ *      email: email
+ *  }
+ *  fail:
+ *  db error
+ *  {
+ *      error: errormessage
+ *  }
+ *  email exists
+ *  {
+ *      exists: true
+ *  }
+ *          
+ *
+ * @return {undefined}
+ */
 app.post('/register', function(req, res, next) {
+    // using custom callback for passport
     passport.authenticate('local-register', function(err, user, info) {
         // passport.js done(err)
-        console.log('- Registering User');
+        console.log(' - registering user ');
         if (err) {
             res.json({error: 'db error'});
             return next(err);
         }
+
+        console.log(' - db ok ');
 
         // passport.js done(null, false)
         // email in use
         if (!user) {
             return res.json({exists: true});
         }
+
+        console.log(' - email ok ');
 
         // Generate jwt with user email
         // iat added by default

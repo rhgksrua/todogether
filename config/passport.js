@@ -1,6 +1,17 @@
 /*jslint node:true */
 'use strict';
 
+/**
+ * passport.js - passportjs middleware 
+ * intercept request
+ *
+ * Registers Users
+ * Add users if email does not exists
+ * 
+ * @return {undefined}
+ */
+
+
 var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('../models/User');
@@ -11,7 +22,6 @@ module.exports = function(passport) {
         passwordField: 'password',
         passReqToCallback: true
     }, function(req, email, password, done) {
-        console.log('hello');
         process.nextTick(function() {
             User.findOne({'email': email}, function(err, user) {
                 // DB error
