@@ -1,11 +1,17 @@
+/*jslint node: true */
 // server.js
 
 var express = require('express');
 var app = express();
 var dbconnection = require('./models/dbconnect');
-var User = require('./models/SchemaTemplate');
 var Todo = require('./models/Todo');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var jwt = require('jsonwebtoken');
+
+require('./config/passport')(passport);
+
+app.use(passport.initialize());
 
 app.use(bodyParser.json());
 
@@ -43,6 +49,32 @@ app.get('/api/todo', function(req, res) {
         }
         return res.json(todo);
     });
+});
+
+app.post('/register', function(req, res, next) {
+    passport.authenticate('local-register', function(err, user, info) {
+        // passport.js done(err)
+        console.log('- Registering User');
+        if (err) {
+            res.json({error: 'db error'});
+            return next(err);
+        }
+
+        // passport.js done(null, false)
+        // email in use
+        if (!user) {
+            return res.json({exists: true});
+        }
+
+        // Generate jwt with user email
+        // iat added by default
+        // NOTE: need to change 'pass'
+        var token = jwt.sign({
+            email: user.email
+        }, 'pass');
+
+        return res.json({token: token, email: user.email});
+    })(req, res, next);
 });
 
 var server = app.listen(3000, function() {
