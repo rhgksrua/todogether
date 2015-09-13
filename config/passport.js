@@ -5,7 +5,7 @@
  * passport.js - passportjs middleware 
  * intercept request
  *
- * Registers Users
+ * Register Users
  * Add users if email does not exists
  * 
  * @return {undefined}
@@ -34,7 +34,8 @@ module.exports = function(passport) {
                 } else {
                     var newUser = new User();
                     newUser.email = email;
-                    newUser.password = newUser.generateHash(password);
+                    //newUser.password = newUser.generateHash(password);
+                    newUser.password = password;
                     newUser.save(function(err, addedUser) {
                         // DB error
                         if (err) {
