@@ -63,11 +63,10 @@ myApp.service('registerService', ['$http', '$window', function($http, $window) {
         user=sanitize(user);
         console.log(user);
         return $http.post("/login", user)
-            .then(function(respone){
+            .then(function(response){
+                console.log(response);
                 return response;
         });
-
-
-    }
+    };
 
 }]);
