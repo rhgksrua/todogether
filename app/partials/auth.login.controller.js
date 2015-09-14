@@ -10,7 +10,7 @@ myApp.controller("loginCtrl",["registerService","$location",function(rService,lo
             function(res){
                 ls.status=res.data.status;
                 if(ls.status==="login success"){
-                    location.path("/create")
+                    location.path("/save")
                 }
             }
         )

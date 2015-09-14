@@ -5,20 +5,20 @@
 describe('my app', function() {
 
 
-  it('should automatically redirect to /create when location hash/fragment is empty', function() {
+  it('should automatically redirect to /save when location hash/fragment is empty', function() {
     browser.get('index.html');
-    expect(browser.getLocationAbsUrl()).toMatch("/create");
+    expect(browser.getLocationAbsUrl()).toMatch("/save");
   });
 
 
   describe('create', function() {
 
     beforeEach(function() {
-      browser.get('index.html#/create');
+      browser.get('index.html#/save');
     });
 
 
-    it('should render create when user navigates to /create', function() {
+    it('should render save when user navigates to /save', function() {
       expect(element.all(by.css('[ng-view] p')).first().getText()).
         toMatch(/partial for view 1/);
     });

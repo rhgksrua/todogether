@@ -2,7 +2,7 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
         'ui.router', 
-        'myApp.create', 
+        'myApp.save',
         'ngMessages'
     ])
     .config(['$httpProvider', '$stateProvider', '$urlRouterProvider', function($httpProvider, $stateProvider, $urlRouterProvider) {

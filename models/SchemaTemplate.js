@@ -25,7 +25,7 @@ var UserSchema = new Schema({
 
 });
 
-// Required to create schema into a model
+// Required to save schema into a model
 // collection will be named users.  Model takes the 'User' and make it plural.
 var User = mongoose.model('User', UserSchema);
 

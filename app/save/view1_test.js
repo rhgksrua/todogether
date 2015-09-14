@@ -1,10 +1,10 @@
 'use strict';
 
-describe('myApp.create module', function() {
+describe('myApp.save module', function() {
 
   beforeEach(module('myApp.create'));
 
-  describe('create controller', function(){
+  describe('save controller', function(){
 
     it('should ....', inject(function($controller) {
       //spec body
