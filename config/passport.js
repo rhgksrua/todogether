@@ -47,5 +47,35 @@ module.exports = function(passport) {
             });
         });
     }));
+
+    passport.use('local-login', new LocalStrategy({
+        usernameField: 'email',
+        passwordField: 'password',
+        passReqToCallback: true
+    }, function(req, email, password, done) {
+        process.nextTick(function() {
+            User.findOne({'email': email}, function(err, user) {
+                if (err) {
+                    // DB error
+                    return done(err);
+                }
+                console.log(user);
+
+                if (!user) {
+                    // user does not exist
+                    return done(null, false);
+                }
+
+                if (user.validPassword(password)) {
+                    // email exists check password
+                    return done(null, user);
+
+                } else {
+                    // password does not match
+                    return done(null, false);
+                }
+            });
+        });
+    }));
 };
 

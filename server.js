@@ -110,6 +110,35 @@ app.post('/register', function(req, res, next) {
     })(req, res, next);
 });
 
+app.post('/login', function(req, res, next) {
+    passport.authenticate('local-login', function(err, user, info) {
+
+        if (err) {
+            // DB error
+            res.json({error: 'db error'});
+            return next(err);
+        }
+
+        console.log(' - db ok ');
+
+        // passport.js done(null, false)
+        // email in use
+        if (!user) {
+            console.log(' - log in failed');
+            return res.json({error: 'login failed'});
+        }
+
+        // Generate jwt with user email
+        // iat added by default
+        // NOTE: need to change 'pass'
+        var token = jwt.sign({
+            email: user.email
+        }, 'pass');
+
+        return res.json({token: token, email: user.email});
+    })(req, res, next);
+});
+
 var server = app.listen(3000, function() {
     var host = server.address().address;
     var port = server.address().port;
