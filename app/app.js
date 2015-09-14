@@ -18,7 +18,8 @@ angular.module('myApp', [
             })
             .state("login", {
                 url: "/login",
-                templateUrl: "partials/login.html" 
+                templateUrl: "partials/login.html",
+                controller:"loginCtrl as lc"
             })
             .state("register", {
                 url: "/register",
