@@ -6,8 +6,7 @@ angular.module('myApp.save', ['ui.router'])
   $stateProvider
       .state('create', {
         url: "/save",
-        templateUrl: "/list.html",
-          controller:"View1Ctrl",
-          controllerAs:"vc"
+        templateUrl: "save/list.html",
+          controller:"listCtrl as lc"
       })
 }]);
