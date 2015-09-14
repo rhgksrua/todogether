@@ -65,6 +65,8 @@ myApp.service('registerService', ['$http', '$window', function($http, $window) {
         return $http.post("/login", user)
             .then(function(response){
                 console.log(response);
+                reg.setToken(response.data.token);
+                //console.log(reg.getToken(key)+" ttttoken");
                 return response;
         });
     };
