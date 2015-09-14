@@ -10,7 +10,4 @@ angular.module('myApp.save').service("listService", ["$http", "$window", functio
                 return response;
             });
     };
-
-
-
 }]);

@@ -15,13 +15,24 @@ myApp.controller('listCtrl', ["listService", function(listService) {
     ];
 
     // Init todo list.  If user logged in show personal list
-    //listService.getTodoList();
+    listService.getTodoList()
+        .then(function(response) {
+            if (response.data.error) {
+                throw new Error('db error');
+            }
+            lc.todoList = response.data.todoList;
+            return response;
+        })
+        .then(null, function(response) {
+            console.log(response.data);
+        });
 
+    /**
+     * saveTodoList - send list to server in json thru ajax
+     *
+     * @return {undefined}
+     */
     lc.saveTodoList = function() {
-        console.log(lc.todoList);
-
-        /* UNCOMMENT WHEN SERVER IS READY!
-         *
         listService.getTodoList(lc.todoList)
             .then(function(response) {
                 if (reponse.data.error) {
@@ -30,10 +41,9 @@ myApp.controller('listCtrl', ["listService", function(listService) {
                 lc.todoList = response.data.list;
                 return response;
             })
-            .then(null, function() {
-
+            .then(null, function(response) {
+                console.log(response);
             });
-            */
     };
 
     /**
