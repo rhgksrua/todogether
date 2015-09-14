@@ -1,2 +1,26 @@
-<h1>{{lc.name}}</h1>
-<hr/>
+
+<h1 class='page-header'>TODO LIST</h1>
+
+
+<div class='container-fluid'>
+    <form>
+        <div class='input-group'>
+            <input class='form-control' type='text' id='new-task' ng-model='lc.newTask' />
+            <span class='input-group-btn'>
+                <button type='submit' class='btn btn-default' ng-click='lc.addTask()'>ADD</button>
+            </span>
+        </div>
+    </form>
+    <ul class='list-group'>
+        <li class='list-group-item' ng-repeat='task in lc.todoList'>
+            <div class='input-group'>
+                <input class='form-control' type='text' value='{{task.content}}' ng-disabled='task.done'>
+                <span class='input-group-btn'>
+                    <button class='btn btn-default done-task' ng-click='lc.taskComplete($index)'>DONE</button>
+                </span>
+            </div>
+        </li>
+    </ul>
+    <button class='btn btn-primary save' ng-click='lc.saveTodoList()'>SAVE</button>
+</div>
+
