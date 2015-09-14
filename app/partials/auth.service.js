@@ -31,6 +31,12 @@ myApp.service('registerService', ['$http', '$window', function($http, $window) {
         return store.getItem(key);
     };
 
+
+    reg.removeToken = function(){
+        console.log("removing token");
+        store.removeItem(key);
+    }
+
     /**
      * sanitize - only allows email and password in user object
      *

@@ -11,6 +11,10 @@ myApp.controller("loginCtrl",["registerService","$location",function(rService,lo
                 ls.status=res.data.status;
                 if(ls.status==="login success"){
                     location.path("/save")
+                }else{
+                    //removing token on login failure
+                    rService.removeToken();
+                   // throw new Error('Login Failure');
                 }
             }
         )
