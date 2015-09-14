@@ -5,6 +5,8 @@ var myApp = angular.module('myApp.save');
 myApp.controller('listCtrl', ["listService", function(listService) {
     var lc = this;
 
+    lc.loggedIn = false;
+
     lc.newTask = '';
 
     // TEMPORARY list
@@ -21,6 +23,7 @@ myApp.controller('listCtrl', ["listService", function(listService) {
                 throw new Error('db error');
             }
             lc.todoList = response.data.todoList;
+            lc.loggedIn = true;
             return response;
         })
         .then(null, function(response) {
@@ -33,7 +36,12 @@ myApp.controller('listCtrl', ["listService", function(listService) {
      * @return {undefined}
      */
     lc.saveTodoList = function() {
-        listService.getTodoList(lc.todoList)
+        if (false) {
+            // not logged in. not saving anything.
+            lc.loggedIn = false;
+            return;
+        }
+        listService.saveTodoList(lc.todoList)
             .then(function(response) {
                 if (reponse.data.error) {
                     throw new Error('db error');

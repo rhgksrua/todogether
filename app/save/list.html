@@ -1,6 +1,8 @@
 
 <h1 class='page-header'>TODO LIST</h1>
 
+<div class=''ng-show='lc.loggedIn'>You are logged in</div>
+
 
 <div class='container-fluid'>
     <form>
@@ -22,5 +24,8 @@
         </li>
     </ul>
     <button class='btn btn-primary save' ng-click='lc.saveTodoList()'>SAVE</button>
+    <!-- 
+    <button ng-show='lc.loggedIn' class='btn btn-primary save' ng-click='lc.saveTodoList()'>SAVE</button>
+    -->
 </div>
 
