@@ -44,7 +44,7 @@ myApp.controller('listCtrl', ["listService", function(listService) {
         }
         listService.saveTodoList(lc.todoList)
             .then(function(response) {
-                if (reponse.data.error) {
+                if (response.data.error) {
                     throw new Error('db error');
                 }
                 lc.todoList = response.data.list;
