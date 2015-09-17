@@ -13,6 +13,7 @@ var UserSchema = new Schema({
     password: {type: String, required: true},
     created: {type: Date, default: Date.now},
     updated: {type: Date, default: Date.now},
+    todo: []
 });
 
 UserSchema.pre('save', function(next) {
