@@ -10,7 +10,7 @@ angular.module('myApp.save').service("listService", ["$http", "$window", functio
      * @return {undefined}
      */
     todo.getTodoList = function() {
-        return $http.post("/getTodoList")
+        return $http.get("/api/getTodoList")
             .then(function(response) {
                 return response;
             });
@@ -23,7 +23,7 @@ angular.module('myApp.save').service("listService", ["$http", "$window", functio
      * @return {undefined}
      */
     todo.saveTodoList = function(todoList) {
-        return $http.post('/saveTodoList', todoList)
+        return $http.post('/api/saveTodoList', todoList)
             .then(function(response) {
                 return response;
             });

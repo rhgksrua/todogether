@@ -29,7 +29,7 @@ app.get('/notes', function(req, res) {
 });
 
 
-app.post('/api/todo', function(req, res) {
+app.post('/api/saveTodoList', function(req, res) {
     var todo = new Todo(req.body);
     todo.save(function(err, data) {
         if (err) {
@@ -41,13 +41,23 @@ app.post('/api/todo', function(req, res) {
     });
 });
 
-app.get('/api/todo', function(req, res) {
-    Todo.find().exec(function(err, todo) {
+app.get('/api/getTodoList', function(req, res) {
+    /*Todo.find().exec(function(err, todo) {
         if (err) {
             return res.json({err: 'db exec error'});
         }
         return res.json(todo);
-    });
+    });*/
+    console.log("api get")
+    var todoList = [
+        {content: 'feed cats', done: false},
+        {content: 'kick balls', done: false},
+        {content: 'do nothing', done: false}
+    ];
+    res.json(todoList);
+   // console.log(res);
+
+
 });
 
 /**

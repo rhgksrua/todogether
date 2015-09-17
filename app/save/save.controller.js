@@ -9,20 +9,21 @@ myApp.controller('listCtrl', ["listService", function(listService) {
 
     lc.newTask = '';
 
-    // TEMPORARY list
+    /*// TEMPORARY list
     lc.todoList = [
         {content: 'feed cat', done: false},
         {content: 'kick ball', done: false},
         {content: 'do nothing', done: false}
-    ];
+    ];*/
 
     // Init todo list.  If user logged in show personal list
     listService.getTodoList()
         .then(function(response) {
+            console.log(response)
             if (response.data.error) {
                 throw new Error('db error');
             }
-            lc.todoList = response.data.todoList;
+            lc.todoList = response.data;
             lc.loggedIn = true;
             return response;
         })
