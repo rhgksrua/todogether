@@ -14,12 +14,11 @@ require('./config/passport')(passport);
 app.use(passport.initialize());
 
 app.use(bodyParser.json());
-
+app.use(express.static('app'));
 app.get('/', function(req, res) {
-    res.send('Hello World!');
+    res.sendFile(__dirname + '/app/index.html');
 });
 
-app.use(express.static('app'));
 
 app.get('/notes', function(req, res) {
     var note = {
