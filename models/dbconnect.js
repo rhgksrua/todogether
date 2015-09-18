@@ -9,7 +9,7 @@
  *
  */
 var mongoose = require('mongoose');
-var dbUri = 'mongodb://localhost/todogether';
+var dbUri = process.env.MONGOLAB_URI || 'mongodb://localhost/todogether';
 
 mongoose.connect(dbUri);
 
