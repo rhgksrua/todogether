@@ -15,6 +15,11 @@ myApp.controller('listCtrl', ["listService", function(listService) {
         {content: 'kick ball', done: false},
         {content: 'do nothing', done: false}
     ];*/
+    lc.logout=function(){
+        listService.removeToken();
+        lc.loggedIn=false;
+
+    }
 
     // Init todo list.  If user logged in show personal list
     listService.getTodoList()

@@ -1,8 +1,9 @@
 /**
  * Created by pavan on 9/8/15.
  */
-angular.module('myApp.save').service("listService", ["$http", "$window", function($http, $window){
+angular.module('myApp.save').service("listService", ["$http", "$window","$location", function($http, $window,$location){
     var todo = this;
+    var key = 'auth-token';
 
     /**
      * getTodoList - get user todo list if logged in
@@ -28,4 +29,11 @@ angular.module('myApp.save').service("listService", ["$http", "$window", functio
                 return response;
             });
     };
+
+    todo.removeToken = function(){
+        console.log("removing token");
+        $window.localStorage.removeItem(key);
+        $location.path("/");
+
+    }
 }]);
