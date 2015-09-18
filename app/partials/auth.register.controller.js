@@ -42,7 +42,7 @@ myApp.controller('registerCtrl', ['registerService', '$location', function(regis
             .then(function(response) {
                 // Set token
                 registerService.setToken(response.data.token);
-                $location.path('/');
+                $location.path('/save');
                 return response;
             })
             .then(null, function(response) {
