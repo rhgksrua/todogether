@@ -19,7 +19,7 @@ myApp.controller('listCtrl', ["listService", function(listService) {
     // Init todo list.  If user logged in show personal list
     listService.getTodoList()
         .then(function(response) {
-            console.log(response)
+            console.log(response);
             if (response.data.error) {
                 throw new Error('db error');
             }
@@ -47,7 +47,7 @@ myApp.controller('listCtrl', ["listService", function(listService) {
                 if (response.data.error) {
                     throw new Error('db error');
                 }
-                console.log(response)
+                console.log(response);
                // lc.todoList = response.data.list;
                 return response;
             })
