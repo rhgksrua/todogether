@@ -16,7 +16,7 @@
     <ul class='list-group'>
         <li class='list-group-item' ng-repeat='task in lc.todoList'>
             <div class='input-group'>
-                <input class='form-control' type='text' value='{{task.content}}' ng-disabled='task.done'>
+                <input class='form-control' type='text' ng-disabled='task.done' ng-model="task.content">
                 <span class='input-group-btn'>
                     <button class='btn btn-default done-task' ng-click='lc.taskComplete($index)'>DONE</button>
                 </span>
