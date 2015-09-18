@@ -1,1 +1,17 @@
-<h1>Base Page</h1>
+<h1>Main Page</h1>
+<ul class="menu" ng-hide="bc.login()">
+    <li><a ui-sref="login">Login</a></li>
+    <li><a ui-sref="register">Register</a></li>
+</ul>
+<ul class="menu" ng-show="bc.login()">
+    <li><a ui-sref="create">todo list</a></li>
+    <li><a  ng-click="bc.logout()"  ui-sref="#">Log out</a></li>
+</ul>
+
+
+
+<div class="jumbotron">
+    <h2>Basic Todo list </h2>
+    <p>Implemented using passport, jwt, angular and node! as a group project.</p>
+    <p>Register and login to create todo list</p>
+</div>

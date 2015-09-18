@@ -5,6 +5,10 @@ var myApp=angular.module("myApp");
 myApp.controller("loginCtrl",["registerService","$location",function(rService,location){
     var ls=this;
     ls.status=""
+    ls.checkLogin = function(){
+        return rService.getToken();
+    }
+
     ls.submit=function(user){
         rService.login(user).then(
             function(res){

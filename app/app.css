@@ -1,5 +1,15 @@
 /* app css stylesheet */
+@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+body{
+  background-color: #ffffff;
+  font-family: 'Indie Flower', cursive;
+  font-weight: 400;
+  font-size: 14px;
+  color: #555;
 
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+}
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -27,4 +37,7 @@
 .menu > li:nth-child(1):before {
   content: "";
   padding: 0;
+}
+.jumbotron p{
+    color: #006dcc;
 }

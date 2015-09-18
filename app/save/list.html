@@ -1,13 +1,10 @@
-
+<ul class="menu" >
+    <li><a  ng-click="lc.logout()"  ui-sref="#">Log out</a></li>
+</ul>
 <h1 class='page-header'>TODO LIST</h1>
 
-<div class=''ng-show='lc.loggedIn'>You are logged in</div>
-
-<div class="pull-left">
-    <button type="button" class="btn btn-default " ng-click="lc.logout()">logout</button>
-</div>
-
-<div class='container-fluid'>
+<!--<div class=''ng-show='lc.loggedIn'>You are logged in</div>-->
+<div class='container-fluid col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8'>
     <form>
         <div class='input-group'>
             <input class='form-control' type='text' id='new-task' ng-model='lc.newTask' />

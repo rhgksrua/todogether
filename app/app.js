@@ -14,7 +14,8 @@ angular.module('myApp', [
         $stateProvider
             .state("base", {
                 url : "/main" ,
-                templateUrl : "partials/base.html"
+                templateUrl : "partials/base.html",
+                controller : "baseController as bc"
             })
             .state("login", {
                 url: "/login",
