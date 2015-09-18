@@ -61,13 +61,18 @@ app.get('/api/getTodoList',ejwt({secret: 'pass'}), function(req, res) {
         }
         return res.json(todo);
     });*/
-    User.find({
-        email : req.body.email
+    console.log(req);
+    User.findOne({
+        email : req.user.email
+
     }).exec(function(err, data){
         if (err) {
             return res.json({err: 'db exec error'});
         }
-        return res.json(data);
+        console.log("email : "+req.user.email)
+        console.log("data :")
+        console.log(data);
+        return res.json(data.todo);
 
     });
 

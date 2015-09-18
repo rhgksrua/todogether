@@ -47,7 +47,8 @@ myApp.controller('listCtrl', ["listService", function(listService) {
                 if (response.data.error) {
                     throw new Error('db error');
                 }
-                lc.todoList = response.data.list;
+                console.log(response)
+               // lc.todoList = response.data.list;
                 return response;
             })
             .then(null, function(response) {
@@ -62,7 +63,7 @@ myApp.controller('listCtrl', ["listService", function(listService) {
      */
     lc.addTask = function() {
         console.log(lc.newTask);
-        lc.todoList.push({content: lc.newTask});
+        lc.todoList.push({content: lc.newTask ,done:false });
         lc.newTask = '';
     };
 
